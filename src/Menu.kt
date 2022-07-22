@@ -1,7 +1,13 @@
+import carrinho.Carrinho
+import pagamento.Pagamento
+
 class Menu {
     var opcao = 0
     var opcaoLanche = 0
     var opcaoBebida = 0
+    val carrinho = Carrinho()
+
+
 
 
     fun menu(){
@@ -45,11 +51,15 @@ try {
             when {
                 opcaoLanche == 1 -> {
                     println("-------- X - Burguer ---------")
-                    Xburguer().qtdadeItem()
+                   carrinho.quantidadeXBurguer()
+                    carrinho.exibirCarrinho()
+                    adicionarMaisProduto()
                 }
                 opcaoLanche == 2 -> {
-                    "-------- X - Salada --------"
-                    Xsalada().qtdadeItem()
+                    println("-------- X - Salada --------")
+                   carrinho.quantidadeXSalada()
+                    carrinho.exibirCarrinho()
+                    adicionarMaisProduto()
                 }
                 else -> {
                     println("Opção inválida, tente novamente")
@@ -74,11 +84,16 @@ try {
             when {
                 opcaoBebida == 1 -> {
                     println("-------- Refrigerante ---------")
-                    Refri().qtdadeItem()
+                    carrinho.quantidadeRefri()
+                    carrinho.exibirCarrinho()
+                    adicionarMaisProduto()
+
                 }
                 opcaoBebida == 2 -> {
                     "-------- Suco --------"
-                    Suco().qtdadeItem()
+                    carrinho.quantidadeSuco()
+                    carrinho.exibirCarrinho()
+                    adicionarMaisProduto()
                 }
                 else -> {
                     println("Opção inválida, tente novamente")
@@ -91,4 +106,19 @@ try {
             menuBebida()
         }
     }
+
+    fun adicionarMaisProduto(){
+        println("Quer mais item? [1] - sim [2] - não")
+        var maisItem = readln().toInt()
+
+        when(maisItem){
+            1 -> menu()
+            2 -> {
+               carrinho.pagamento()
+            }
+        }
+    }
+
+
+
 }
