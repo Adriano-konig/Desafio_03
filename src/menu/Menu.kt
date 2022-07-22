@@ -1,5 +1,6 @@
+package menu
+
 import carrinho.Carrinho
-import pagamento.Pagamento
 
 class Menu {
     var opcao = 0
@@ -114,10 +115,35 @@ try {
         when(maisItem){
             1 -> menu()
             2 -> {
-               carrinho.pagamento()
+                menuContinuaOuNão()
             }
         }
     }
+
+    fun menuContinuaOuNão() {
+        println("Oque mais..")
+        println("[1] -> voltar ao menu?\n" +
+                "[2] -> Quer Editar um item?\n" +
+                "[3] -> Quer retirar um item?\n" +
+                "[4] -> ou Finalizar")
+        var opcaoMenu = readln().toInt()
+
+        when{
+            opcaoMenu == 1 ->{ menu() }
+            opcaoMenu == 2 ->{ carrinho.editarItem()
+            carrinho.exibirCarrinho()
+            menuContinuaOuNão()}
+            opcaoMenu == 3 ->{carrinho.removerItem()
+            carrinho.exibirCarrinho()
+            menuContinuaOuNão()}
+            opcaoMenu == 4 ->{carrinho.exibirCarrinho()
+            carrinho.pagamento()}
+        }
+    }
+
+
+
+
 
 
 

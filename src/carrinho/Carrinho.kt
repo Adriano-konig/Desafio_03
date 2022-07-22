@@ -1,10 +1,10 @@
 package carrinho
 
-import Produto
-import Refri
-import Suco
-import Xburguer
-import Xsalada
+import produto.Produto
+import tipoProduto.Refri
+import tipoProduto.Suco
+import tipoProduto.Xburguer
+import tipoProduto.Xsalada
 import pagamento.Pagamento
 
 class Carrinho {
@@ -51,7 +51,7 @@ class Carrinho {
     fun quantidadeXSalada(){
         val qnt = pedirQuantidade()
         val valorParcial= ValorParcial(qnt, 12.0)
-        val item =Xsalada(
+        val item = Xsalada(
             nome="X-Salada",
             preco = 12.00,
             quantidade = qnt,
@@ -78,7 +78,7 @@ class Carrinho {
         val qnt = pedirQuantidade()
         val valorParcial= ValorParcial(qnt, 6.00)
         val item = Suco(
-            nome="Suco",
+            nome="tipoProduto.Suco",
             preco = 6.00,
             quantidade = qnt,
             precoTotal = valorParcial
@@ -90,7 +90,7 @@ class Carrinho {
 
     fun exibirCarrinho(){
         listaItens.forEach { codigo, produto ->
-            println("$codigo - ${produto.nome} | Quantidade: ${produto.quantidade} | Preco Produto: ${produto.precoTotal}")
+            println("$codigo - ${produto.nome} | Quantidade: ${produto.quantidade} | Preço de Produto: ${produto.precoTotal}")
         }
         println("Total carrinho: ${precoTotalCarrinho}")
 
@@ -108,6 +108,49 @@ class Carrinho {
     fun pagamento(){
         var pagamento = Pagamento(precoTotalCarrinho)
         pagamento.finalizacao()
+    }
+
+    fun verificarCodigo(): Int{
+        println("Qual o código? ")
+        val buscarCodigo = readln().toInt()
+       return buscarCodigo
+    }
+
+    fun removerItem() {
+        var codigoDigitado = verificarCodigo()
+
+        if(codigoDigitado in listaItens){
+            listaItens.remove(codigoDigitado)
+            valorTotal()
+            println("item removido")
+        }else{
+            println("codigo invalido!")
+            removerItem()
+        }
+    }
+
+    fun editarItem(){
+        var codigoDigitado = verificarCodigo()
+        if(codigoDigitado in listaItens){
+            var produto = listaItens[codigoDigitado]
+            if (produto != null){
+                produto.quantidade = editarQuantidade()
+                produto.precoTotal = produto.quantidade * produto.preco
+                valorTotal()
+                println("Quantidade editada")
+            }
+        }else{
+            println("codigo invalido!")
+            editarItem()
+        }
+    }
+
+    fun editarQuantidade(): Int{
+        println("Escrever novo quantidade")
+        var novaQuantidade = readln().toInt()
+
+        return novaQuantidade
+
     }
 
 
