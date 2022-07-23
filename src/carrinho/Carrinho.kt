@@ -22,10 +22,16 @@ class Carrinho {
     }
 
 
-   private fun pedirQuantidade() : Int{
-        println("digite quantidade")
-        return readln().toIntOrNull() ?: 0
-    }
+   private fun pedirQuantidade() : Int {
+       return try {
+           println("Digite quantidade:")
+           readln().toInt()
+       }catch (ex : Exception){
+           ex.toString()
+           println("Não aceito letras apena numeros")
+           pedirQuantidade()
+       }
+   }
 
     fun inserirCarrinho(item: Produto) : Int{
         codigo += 1
@@ -117,32 +123,44 @@ class Carrinho {
     }
 
     fun removerItem() {
-        var codigoDigitado = verificarCodigo()
+        try {
+            var codigoDigitado = verificarCodigo()
 
-        if(codigoDigitado in listaItens){
-            listaItens.remove(codigoDigitado)
-            valorTotal()
-            println("item removido")
-        }else{
-            println("codigo invalido!")
+            if (codigoDigitado in listaItens) {
+                listaItens.remove(codigoDigitado)
+                valorTotal()
+                println("item removido")
+            } else {
+                println("codigo invalido!")
+                removerItem()
+            }
+        }catch (ex:Exception) {
+            ex.toString()
+            println("Porfavor digite apena numero não a letras")
             removerItem()
         }
     }
 
-    fun editarItem(){
-        var codigoDigitado = verificarCodigo()
-        if(codigoDigitado in listaItens){
-            var produto = listaItens[codigoDigitado]
-            if (produto != null){
-                produto.quantidade = editarQuantidade()
-                produto.precoTotal = produto.quantidade * produto.preco
-                valorTotal()
-                println("Quantidade editada")
+    fun editarItem() {
+        try {
+            var codigoDigitado = verificarCodigo()
+            if (codigoDigitado in listaItens) {
+                var produto = listaItens[codigoDigitado]
+                if (produto != null) {
+                    produto.quantidade = editarQuantidade()
+                    produto.precoTotal = produto.quantidade * produto.preco
+                    valorTotal()
+                    println("Quantidade editada")
+                }
+            } else {
+                println("codigo invalido!")
+                editarItem()
             }
-        }else{
-            println("codigo invalido!")
-            editarItem()
-        }
+    }catch(ex:Exception){
+        ex.toString()
+        println("Porfavor digite apena numero não a letras")
+        editarItem()
+    }
     }
 
     fun editarQuantidade(): Int{
@@ -152,6 +170,5 @@ class Carrinho {
         return somaNovoQuantidade
 
     }
-
 
 }
