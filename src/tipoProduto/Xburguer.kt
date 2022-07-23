@@ -12,5 +12,4 @@ nome,
 preco,
 quantidade,
 precoTotal
-){
-}
+)

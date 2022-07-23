@@ -12,7 +12,4 @@ class Refri(
     preco,
     quantidade,
     precoTotal
-){
-
-
-}
+)

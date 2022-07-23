@@ -2,9 +2,7 @@ package pagamento
 
 import kotlin.system.exitProcess
 
-class Pagamento (
-    private var precoTotalCarrinho: Double = 0.0
-        ){
+class Pagamento (private var precoTotalCarrinho: Double = 0.0){
 
     fun trocoDinheiro(){
         println("Qual valor você possui dinheiro?")

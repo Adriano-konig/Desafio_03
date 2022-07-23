@@ -12,6 +12,4 @@ class Xsalada(
     preco,
     quantidade,
     precoTotal
-){
-
-}
+)

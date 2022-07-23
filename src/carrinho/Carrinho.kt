@@ -10,9 +10,7 @@ import pagamento.Pagamento
 class Carrinho {
 
     var codigo = 50
-
     var precoTotalCarrinho = 0.0
-
     private val listaItens = mutableMapOf<Int, Produto>()
 
 
@@ -45,7 +43,7 @@ class Carrinho {
         val qnt = pedirQuantidade()
         val valorParcial = ValorParcial(qnt,10.0)
         val item = Xburguer(
-            nome="x -burguer",
+            nome="x - burguer",
             preco = 10.00,
             quantidade = qnt,
             precoTotal = valorParcial
@@ -58,7 +56,7 @@ class Carrinho {
         val qnt = pedirQuantidade()
         val valorParcial= ValorParcial(qnt, 12.0)
         val item = Xsalada(
-            nome="X-Salada",
+            nome="X- Salada",
             preco = 12.00,
             quantidade = qnt,
             precoTotal = valorParcial
@@ -71,7 +69,7 @@ class Carrinho {
         val qnt = pedirQuantidade()
         val valorParcial= ValorParcial(qnt, 8.0)
         val item = Refri(
-            nome="Refri",
+            nome="Refrigerante",
             preco = 8.00,
             quantidade = qnt,
             precoTotal = valorParcial
