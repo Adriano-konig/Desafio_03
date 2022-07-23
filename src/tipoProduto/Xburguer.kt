@@ -3,13 +3,13 @@ package tipoProduto
 import produto.Produto
 
 class Xburguer(
-nome:String,
+    nome:String,
     preco:Double,
-quantidade:Int,
-precoTotal: Double
+    quantidade:Int,
+    precoTotal: Double
 ) : Produto(
-nome,
-preco,
-quantidade,
-precoTotal
+    nome,
+    preco,
+    quantidade,
+    precoTotal
 )
