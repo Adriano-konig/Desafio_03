@@ -16,13 +16,13 @@ class Carrinho {
     private val listaItens = mutableMapOf<Int, Produto>()
 
 
-    fun ValorParcial(qntd: Int, valorUnitario: Double): Double {
+     private fun ValorParcial(qntd: Int, valorUnitario: Double): Double {
         val valorParcial = qntd * valorUnitario
         return valorParcial
     }
 
 
-    fun pedirQuantidade() : Int{
+   private fun pedirQuantidade() : Int{
         println("digite quantidade")
         return readln().toIntOrNull() ?: 0
     }
@@ -78,7 +78,7 @@ class Carrinho {
         val qnt = pedirQuantidade()
         val valorParcial= ValorParcial(qnt, 6.00)
         val item = Suco(
-            nome="tipoProduto.Suco",
+            nome="Suco",
             preco = 6.00,
             quantidade = qnt,
             precoTotal = valorParcial
@@ -96,7 +96,7 @@ class Carrinho {
 
     }
 
-    fun valorTotal(){
+    private fun valorTotal(){
         var precoTotal = 0.0
         listaItens.forEach { codigo, produto ->
             precoTotal += produto.precoTotal
@@ -148,8 +148,8 @@ class Carrinho {
     fun editarQuantidade(): Int{
         println("Escrever novo quantidade")
         var novaQuantidade = readln().toInt()
-
-        return novaQuantidade
+        var somaNovoQuantidade =  novaQuantidade
+        return somaNovoQuantidade
 
     }
 

@@ -3,7 +3,7 @@ package pagamento
 import carrinho.Carrinho
 
 class Pagamento (
-    var precoTotalCarrinho: Double = 0.0
+    private var precoTotalCarrinho: Double = 0.0
         ){
 
     fun trocoDinheiro(){

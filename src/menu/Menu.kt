@@ -6,7 +6,7 @@ class Menu {
     var opcao = 0
     var opcaoLanche = 0
     var opcaoBebida = 0
-    val carrinho = Carrinho()
+    private val carrinho = Carrinho()
 
 
 
@@ -40,7 +40,7 @@ try {
     }
 
 
-    fun menuLanche() {
+    private fun menuLanche() {
         println("Qual lanche gostaria adicionar?:")
         println(
             "[1] -> X-burguer\n" +
@@ -75,7 +75,7 @@ try {
 
     }
 
-    fun menuBebida(){
+    private fun menuBebida(){
         println("Qual bebida quer levar?:")
         println("[1] -> Refrigerante\n" +
                 "[2] -> Suco")
